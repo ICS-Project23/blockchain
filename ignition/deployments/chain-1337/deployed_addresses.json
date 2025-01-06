@@ -1,5 +1,5 @@
 {
-  "VotingModule#Election": "0xC535a29eee933244e71Faf4ca82D9bF746EBa2Ee",
-  "VotingModule#CandidateManager": "0x92E41BCf5415Ea1e47f25691620a3F5B964abEFF",
-  "VotingModule#Voting": "0x497E8E15dd40b4457989F5e9aDD593ED8568CA14"
+  "VotingModule#Election": "0x6a639eA0c34812270Ad0da5828DF704600B7A2E1",
+  "VotingModule#CandidateManager": "0x57F478215c33e37d5aD09358B3447832D8d6c698",
+  "VotingModule#Voting": "0xb9692e007e5CdceCea1Dc8d667064b7faaF285f3"
 }

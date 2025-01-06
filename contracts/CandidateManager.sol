@@ -4,16 +4,17 @@
 */
 pragma solidity ^0.8.0;
 import "./Election.sol";
+import "./Candidate.sol";
 
 contract CandidateManager {
-    struct Candidate {
-        uint id;
-        string full_names;
-        string date_of_birth;
-        string cid; // used to store an image of the candidate
-        string party;
-        uint256 position_id;
-    }
+    // struct Candidate {
+    //     uint id;
+    //     string full_names;
+    //     string date_of_birth;
+    //     string cid; // used to store an image of the candidate
+    //     string party;
+    //     uint256 position_id;
+    // }
 
     struct Position {
         string name;
