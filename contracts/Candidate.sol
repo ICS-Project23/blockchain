@@ -8,4 +8,5 @@ struct Candidate {
         string cid;
         string party;
         uint256 position_id;
+        uint256 election_id;
     }

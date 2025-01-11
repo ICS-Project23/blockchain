@@ -14,6 +14,7 @@ contract Election {
         uint256 endTime;
         mapping(uint256 => Position) positions;
         uint256 positionsCount;
+        bool isActive;
     }
 
     mapping(uint256 => ElectionDetails) elections;
@@ -50,6 +51,7 @@ contract Election {
         election.name = _name;
         election.startTime = _startTime;
         election.endTime = _endTime;
+        election.isActive = false;
         emit ElectionCreated(_name, _startTime, _endTime);
     }
 
@@ -153,19 +155,28 @@ contract Election {
         return (ids, names, startTimes, endTimes);
     }
 
-    function startElection() public onlyAdmin {
-        require(!electionStatus, "Election has already started");
-        electionStatus = true;
+    function startElection(uint _election_id) public onlyAdmin {
+        require(_election_id > 0 && _election_id <= electionCount, "Invalid election ID");
+
+        ElectionDetails storage election = elections[_election_id];
+        require(!election.isActive, "Election is already active");
+        election.isActive = true;
+
         emit ElectionStarted();
     }
 
-    function endElection() public onlyAdmin {
-        require(electionStatus, "Election has not started yet");
-        electionStatus = false;
+    function endElection(uint _election_id) public onlyAdmin {
+        require(_election_id > 0 && _election_id <= electionCount, "Invalid election ID");
+        ElectionDetails storage election = elections[_election_id];
+        require(election.isActive, "Election is not active");
+        election.isActive = false;
         emit ElectionEnded();
     }
 
-    function isElectionActive() public view returns (bool) {
-        return electionStatus;
+    function isElectionActive(uint256 _election_id) public view returns (bool) {
+        require(_election_id > 0 && _election_id <= electionCount, "Invalid election ID");
+        ElectionDetails storage election = elections[_election_id];
+        return election.isActive;
     }
+
 }
